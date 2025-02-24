@@ -48,5 +48,6 @@ https://github.com/error311/multi-file-upload-editor-docker&#xD;
   <Config Name="TOTAL_UPLOAD_SIZE" Target="TOTAL_UPLOAD_SIZE" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">5G</Config>
   <Config Name="HTTP_PORT" Target="HTTP_PORT" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">80</Config>
   <Config Name="HTTPS_PORT" Target="HTTPS_PORT" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">443</Config>
+  <Config Name="BASE_URL" Target="BASE_URL" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">https://yourwebsite/uploads/</Config>
   <TailscaleStateDir/>
 </Container>
