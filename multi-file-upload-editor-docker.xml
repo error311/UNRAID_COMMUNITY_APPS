@@ -14,7 +14,7 @@
     Directions:&#xD;
     UPLOADS PATH:  path is used to upload your files to&#xD;
 &#xD;
-    TIMEZONE:variable allows you to change your timezone &#xD;
+    TIMEZONE: variable allows you to change your timezone &#xD;
 &#xD;
     DATE_TIME_FORMAT: variable goes with TIMEZONE for displaying on Upload Date &amp;amp; Date Modified&#xD;
 &#xD;
