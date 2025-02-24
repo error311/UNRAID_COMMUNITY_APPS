@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>multi-file-upload-editor</Name>
+  <Repository>error311/multi-file-upload-editor-docker:latest</Repository>
+  <Registry>https://hub.docker.com/r/error311/multi-file-upload-editor-docker</Registry>
+  <Network/>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/error311/multi-file-upload-editor/issues</Support>
+  <Project>https://github.com/error311/multi-file-upload-editor/</Project>
+  <Overview>Multi File Upload &amp;amp; Edit uses apache based web server with basic PHP web server capabilities &#xD;
+&#xD;
+    Directions:&#xD;
+    UPLOADS PATH:  path is used to upload your files to&#xD;
+&#xD;
+    TIMEZONE:variable allows you to change your timezone &#xD;
+&#xD;
+    DATE_TIME_FORMAT: variable goes with TIMEZONE for displaying on Upload Date &amp;amp; Date Modified&#xD;
+&#xD;
+    TOTAL_UPLOAD_SIZE: variable changes apache upload size allowed&#xD;
+&#xD;
+    HTTP_PORT: variable changes apache http port (if changed use this with your container ip:port)&#xD;
+&#xD;
+    HTTPS_PORT: variable changes apache https port (if changed use this with your container ip:port)&#xD;
+&#xD;
+For more inforation please visit:&#xD;
+https://github.com/error311/multi-file-upload-editor&#xD;
+https://github.com/error311/multi-file-upload-editor-docker&#xD;
+&#xD;
+&#xD;
+
+</Overview>
+  <Category>Network:Web</Category>
+  <WebUI>http://[IP]:[PORT:80]/</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/error311/UNRAID_COMMUNITY_APPS/master/multi-file-upload-editor-docker.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/error311/multi-file-upload-editor-docker/66eb6c04c5d326324f60061fce7ea5e3e277cda5/logo.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+  <Config Name="UPLOADS PATH" Target="/var/www/uploads" Default="/mnt/user/appdata/multi-file-upload-editor/uploads/" Mode="rw" Description="" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/multi-file-upload-editor/uploads/</Config>
+  <Config Name="TIMEZONE" Target="TIMEZONE" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">America/New_York</Config>
+  <Config Name="DATE_TIME_FORMAT" Target="DATE_TIME_FORMAT" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">m/d/y  h:iA</Config>
+  <Config Name="TOTAL_UPLOAD_SIZE" Target="TOTAL_UPLOAD_SIZE" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">5G</Config>
+  <Config Name="HTTP_PORT" Target="HTTP_PORT" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">80</Config>
+  <Config Name="HTTPS_PORT" Target="HTTPS_PORT" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">443</Config>
+  <TailscaleStateDir/>
+</Container>
