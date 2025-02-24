@@ -8,7 +8,7 @@
   <Shell>bash</Shell>
   <Privileged>false</Privileged>
   <Support>https://github.com/error311/multi-file-upload-editor/issues</Support>
-  <Project>https://github.com/error311/multi-file-upload-editor/</Project>
+  <Project>https://forums.unraid.net/topic/187337-support-multi-file-upload-editor/</Project>
   <Overview>Multi File Upload &amp;amp; Edit uses apache based web server with basic PHP web server capabilities &#xD;
 &#xD;
     Directions:&#xD;
@@ -23,6 +23,8 @@
     HTTP_PORT: variable changes apache http port (if changed use this with your container ip:port)&#xD;
 &#xD;
     HTTPS_PORT: variable changes apache https port (if changed use this with your container ip:port)&#xD;
+&#xD;
+    BASE_URL: variable changes apaches base url&#xD;
 &#xD;
 For more inforation please visit:&#xD;
 https://github.com/error311/multi-file-upload-editor&#xD;
