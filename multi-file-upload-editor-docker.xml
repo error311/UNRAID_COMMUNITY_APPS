@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container version="2">
+<Container version="3">
   <Name>multi-file-upload-editor</Name>
   <Repository>error311/multi-file-upload-editor-docker:latest</Repository>
   <Registry>https://hub.docker.com/r/error311/multi-file-upload-editor-docker</Registry>
@@ -14,6 +14,8 @@
     Directions:&#xD;
     UPLOADS PATH:  path is used to upload your files to&#xD;
 &#xD;
+    USERS PATH:  path is used to store your users.txt file to&#xD;
+&#xD;    
     TIMEZONE: variable allows you to change your timezone &#xD;
 &#xD;
     DATE_TIME_FORMAT: variable goes with TIMEZONE for displaying on Upload Date &amp;amp; Date Modified&#xD;
@@ -45,6 +47,7 @@ https://github.com/error311/multi-file-upload-editor-docker&#xD;
   <DonateLink/>
   <Requires/>
   <Config Name="UPLOADS PATH" Target="/var/www/uploads" Default="/mnt/user/appdata/multi-file-upload-editor/uploads/" Mode="rw" Description="" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/multi-file-upload-editor/uploads/</Config>
+  <Config Name="USERS_DIR" Target="/var/www/uploads" Default="/mnt/user/appdata/multi-file-upload-editor/" Mode="rw" Description="Path for persistent users file" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/multi-file-upload-editor/</Config>
   <Config Name="TIMEZONE" Target="TIMEZONE" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">America/New_York</Config>
   <Config Name="DATE_TIME_FORMAT" Target="DATE_TIME_FORMAT" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">m/d/y  h:iA</Config>
   <Config Name="TOTAL_UPLOAD_SIZE" Target="TOTAL_UPLOAD_SIZE" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">5G</Config>
