@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
-<Container version="6">
-  <Name>multi-file-upload-editor</Name>
-  <Repository>error311/multi-file-upload-editor-docker:latest</Repository>
-  <Registry>https://hub.docker.com/r/error311/multi-file-upload-editor-docker</Registry>
+<Container version="7">
+  <Name>FileRise</Name>
+  <Repository>error311/filerise-docker:latest</Repository>
+  <Registry>https://hub.docker.com/r/error311/filerise-docker</Registry>
   <Network/>
   <MyIP/>
   <Shell>bash</Shell>
   <Privileged>false</Privileged>
-  <Support>https://github.com/error311/multi-file-upload-editor/issues</Support>
+  <Support>https://github.com/error311/filerise/issues</Support>
   <Project>https://forums.unraid.net/topic/187337-support-multi-file-upload-editor/</Project>
   <Overview>Multi File Upload &amp;amp; Edit uses apache based web server with basic PHP web server capabilities &#xD;
 &#xD;
@@ -33,8 +33,8 @@
     PERSISTENT_TOKENS_KEY: Please change this to a strong key if you intend to use in production env&#xD;
 &#xD;
 For more inforation please visit:&#xD;
-https://github.com/error311/multi-file-upload-editor&#xD;
-https://github.com/error311/multi-file-upload-editor-docker&#xD;
+https://github.com/error311/filerise&#xD;
+https://github.com/error311/filerise-docker&#xD;
 &#xD;
 &#xD;
 
@@ -42,7 +42,7 @@ https://github.com/error311/multi-file-upload-editor-docker&#xD;
   <Category>Network:Web</Category>
   <WebUI>http://[IP]:[PORT:80]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/error311/UNRAID_COMMUNITY_APPS/master/multi-file-upload-editor-docker.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/error311/multi-file-upload-editor-docker/66eb6c04c5d326324f60061fce7ea5e3e277cda5/logo.png</Icon>
+  <Icon>https://raw.githubusercontent.com/error311/FileRise-docker/66eb6c04c5d326324f60061fce7ea5e3e277cda5/logo.png</Icon>
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
@@ -50,9 +50,9 @@ https://github.com/error311/multi-file-upload-editor-docker&#xD;
   <DonateText/>
   <DonateLink/>
   <Requires/>
-  <Config Name="UPLOADS PATH" Target="/var/www/uploads" Default="/mnt/user/appdata/multi-file-upload-editor/uploads/" Mode="rw" Description="" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/multi-file-upload-editor/uploads/</Config>
-  <Config Name="USERS_DIR" Target="/var/www/users" Default="/mnt/user/appdata/multi-file-upload-editor/" Mode="rw" Description="Path for persistent users file" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/multi-file-upload-editor/</Config>
-  <Config Name="META_DIR" Target="/var/www/metadata" Default="/mnt/user/appdata/multi-file-upload-editor/" Mode="rw" Description="Path for persistent metadata file json" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/multi-file-upload-editor/</Config>
+  <Config Name="UPLOADS PATH" Target="/var/www/uploads" Default="/mnt/user/appdata/FileRise/uploads/" Mode="rw" Description="" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/FileRise/uploads/</Config>
+  <Config Name="USERS_DIR" Target="/var/www/users" Default="/mnt/user/appdata/FileRise/" Mode="rw" Description="Path for persistent users file" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/FileRise/</Config>
+  <Config Name="META_DIR" Target="/var/www/metadata" Default="/mnt/user/appdata/FileRise/" Mode="rw" Description="Path for persistent metadata file json" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/FileRise/</Config>
   <Config Name="TIMEZONE" Target="TIMEZONE" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">America/New_York</Config>
   <Config Name="DATE_TIME_FORMAT" Target="DATE_TIME_FORMAT" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">m/d/y  h:iA</Config>
   <Config Name="TOTAL_UPLOAD_SIZE" Target="TOTAL_UPLOAD_SIZE" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">5G</Config>
