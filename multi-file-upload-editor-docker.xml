@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container version="7">
+<Container version="8">
   <Name>FileRise</Name>
   <Repository>error311/filerise-docker:latest</Repository>
   <Registry>https://hub.docker.com/r/error311/filerise-docker</Registry>
@@ -8,8 +8,11 @@
   <Shell>bash</Shell>
   <Privileged>false</Privileged>
   <Support>https://github.com/error311/filerise/issues</Support>
-  <Project>https://forums.unraid.net/topic/187337-support-multi-file-upload-editor/</Project>
-  <Overview>Multi File Upload &amp;amp; Edit uses apache based web server with basic PHP web server capabilities &#xD;
+  <Project>https://forums.unraid.net/topic/187337-support-filerise/</Project>
+  <Overview>FileRise - Elevate your File Management is a lightweight, secure web application for uploading, editing, and managing files.&#xD;
+    It’s built with an Apache/PHP backend and a modern JavaScript frontend (ES6 modules) to provide a responsive, dynamic file management&#xD;
+    interface. The application is ideal for scenarios like document management, image galleries, firmware file hosting, or any situation&#xD;
+    where multiple files need to be uploaded and organized through a web interface.&#xD;
 &#xD;
     Directions:&#xD;
     UPLOADS PATH:  path is used to upload your files to&#xD;
