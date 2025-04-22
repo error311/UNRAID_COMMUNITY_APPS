@@ -63,5 +63,7 @@ https://github.com/error311/filerise-docker&#xD;
   <Config Name="HTTPS_PORT" Target="HTTPS_PORT" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">443</Config>
   <Config Name="BASE_URL" Target="BASE_URL" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">https://yourwebsite/uploads/</Config>
   <Config Name="PERSISTENT_TOKENS_KEY" Target="PERSISTENT_TOKENS_KEY" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">default_please_change_this_key</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="Numeric UID for Apache/www‑data" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Numeric GID for Apache/www‑data" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
   <TailscaleStateDir/>
 </Container>
