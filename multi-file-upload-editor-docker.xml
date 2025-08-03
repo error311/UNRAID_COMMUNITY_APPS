@@ -3,7 +3,7 @@
   <Name>FileRise</Name>
   <Repository>error311/filerise-docker:latest</Repository>
   <Registry>https://hub.docker.com/r/error311/filerise-docker</Registry>
-  <Network/>
+  <Network>bridge</Network>
   <MyIP/>
   <Shell>bash</Shell>
   <Privileged>false</Privileged>
@@ -53,6 +53,7 @@ https://github.com/error311/filerise-docker&#xD;
   <DonateText/>
   <DonateLink/>
   <Requires/>
+  <Config Name="WebUI Port" Target="80" Default="80" Mode="tcp" Description="" Type="Port" Display="always" Required="true" Mask="false">80</Config>
   <Config Name="UPLOADS PATH" Target="/var/www/uploads" Default="/mnt/user/appdata/FileRise/uploads/" Mode="rw" Description="" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/FileRise/uploads/</Config>
   <Config Name="USERS_DIR" Target="/var/www/users" Default="/mnt/user/appdata/FileRise/" Mode="rw" Description="Path for persistent users file" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/FileRise/</Config>
   <Config Name="META_DIR" Target="/var/www/metadata" Default="/mnt/user/appdata/FileRise/" Mode="rw" Description="Path for persistent metadata file json" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/FileRise/</Config>
