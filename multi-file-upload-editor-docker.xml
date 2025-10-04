@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container version="9">
+<Container version="10">
   <Name>FileRise</Name>
   <Repository>error311/filerise-docker:latest</Repository>
   <Registry>https://hub.docker.com/r/error311/filerise-docker</Registry>
@@ -66,5 +66,8 @@ https://github.com/error311/filerise-docker&#xD;
   <Config Name="PERSISTENT_TOKENS_KEY" Target="PERSISTENT_TOKENS_KEY" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">default_please_change_this_key</Config>
   <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="Numeric UID for Apache/www‑data" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
   <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Numeric GID for Apache/www‑data" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
+  <Config Name="SCAN_ON_START" Target="SCAN_ON_START" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="CHOWN_ON_START" Target="CHOWN_ON_START" Default="true" Mode="" Description="Normalize ownership on startup (set false after first run)" Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="SHARE_URL" Target="SHARE_URL" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">/</Config>
   <TailscaleStateDir/>
 </Container>
