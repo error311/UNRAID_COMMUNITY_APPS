@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container version="10">
+<Container version="11">
   <Name>FileRise</Name>
   <Repository>error311/filerise-docker:latest</Repository>
   <Registry>https://hub.docker.com/r/error311/filerise-docker</Registry>
@@ -63,12 +63,13 @@ https://github.com/error311/filerise-docker&#xD;
   <Config Name="TOTAL_UPLOAD_SIZE" Target="TOTAL_UPLOAD_SIZE" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">5G</Config>
   <Config Name="HTTP_PORT" Target="HTTP_PORT" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">80</Config>
   <Config Name="HTTPS_PORT" Target="HTTPS_PORT" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">443</Config>
-  <Config Name="BASE_URL" Target="BASE_URL" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">https://yourwebsite/uploads/</Config>
+  <Config Name="BASE_URL" Target="BASE_URL" Default="" Mode="" Description="(Legacy) Site root; SHARE_URL takes precedence or auto-detect applies." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
   <Config Name="PERSISTENT_TOKENS_KEY" Target="PERSISTENT_TOKENS_KEY" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">default_please_change_this_key</Config>
-  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="Numeric UID for Apache/www‑data" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
-  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Numeric GID for Apache/www‑data" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="Numeric UID to map www-data (Unraid: nobody=99)" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Numeric GID to map www-data (Unraid: users=100)" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
   <Config Name="SCAN_ON_START" Target="SCAN_ON_START" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">true</Config>
   <Config Name="CHOWN_ON_START" Target="CHOWN_ON_START" Default="true" Mode="" Description="Normalize ownership on startup (set false after first run)" Type="Variable" Display="always" Required="false" Mask="false">true</Config>
-  <Config Name="SHARE_URL" Target="SHARE_URL" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">/</Config>
+  <Config Name="SHARE_URL" Target="SHARE_URL" Default="" Mode="" Description="Optional. Set to site root or full endpoint; leave empty to auto-detect." Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="SECURE" Target="SECURE" Default="false" Mode="" Description="true/false. If true, set secure cookies (use when served over HTTPS)" Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
   <TailscaleStateDir/>
 </Container>
