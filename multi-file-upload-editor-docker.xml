@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container version="11">
+<Container version="12">
   <Name>FileRise</Name>
   <Repository>error311/filerise-docker:latest</Repository>
   <Registry>https://hub.docker.com/r/error311/filerise-docker</Registry>
@@ -9,43 +9,46 @@
   <Privileged>false</Privileged>
   <Support>https://github.com/error311/filerise/issues</Support>
   <Project>https://forums.unraid.net/topic/187337-support-filerise/</Project>
-  <Overview>FileRise - Elevate your File Management is a lightweight, secure web application for uploading, editing, and managing files.&#xD;
-    It’s built with an Apache/PHP backend and a modern JavaScript frontend (ES6 modules) to provide a responsive, dynamic file management&#xD;
-    interface. The application is ideal for scenarios like document management, image galleries, firmware file hosting, or any situation&#xD;
-    where multiple files need to be uploaded and organized through a web interface.&#xD;
+  <Overview>FileRise is a lightweight, secure web file manager with uploads, tagging, share links, gallery/table views, and an in-browser editor.&#xD;
 &#xD;
-    Directions:&#xD;
-    UPLOADS PATH:  path is used to upload your files to&#xD;
+    If you change HTTP_PORT / HTTPS_PORT, also edit the corresponding Container Port (Target) in the Port mappings to the same numbers. &#xD;
+    Otherwise the container will listen on a different internal port and the WebUI won’t be reachable.&#xD;
 &#xD;
-    USERS_DIR:  path is used to store your users.txt file&#xD;
+    Bridge mode (default): leave defaults (host 8080 → container 80). Access at http://SERVER_IP:8080/.&#xD;
+		Custom br0 (own IP): change host ports to 80/443 so you can use http://CONTAINER_IP/ (and https://CONTAINER_IP/ if you actually terminate TLS in-container).&#xD;
 &#xD;
-    META_DIR:  path is used to store your file metadata json&#xD;
+Directions:&#xD;
+- UPLOADS PATH: folder where uploaded files are stored.&#xD;
+- USERS_DIR: persistent location for users.txt.&#xD;
+- META_DIR: persistent location for metadata JSON files.&#xD;
+- SESSIONS_DIR: persistent storage for PHP session files.&#xD;
 &#xD;
-    TIMEZONE: variable allows you to change your timezone &#xD;
+Environment Variables:&#xD;
+- TIMEZONE: e.g. America/New_York.&#xD;
+- DATE_TIME_FORMAT: display format for “Uploaded” and “Modified” (e.g. m/d/y  h:iA).&#xD;
+- TOTAL_UPLOAD_SIZE: Apache/PHP upload limit (e.g. 5G).&#xD;
+- HTTP_PORT / HTTPS_PORT: internal Apache ports. Default 80/443. (If you change these, set the Unraid Container Port fields to the same numbers.)&#xD;
+- BASE_URL: legacy base URL; usually leave empty (auto-detected).&#xD;
+- SHARE_URL: optional, set site root or full endpoint; leave empty to auto-detect.&#xD;
+- PERSISTENT_TOKENS_KEY: change to a strong key for production.&#xD;
+- PUID / PGID: map www-data to host UID/GID (Unraid: nobody=99, users=100).&#xD;
+- SCAN_ON_START: true/false; scan uploads on startup.&#xD;
+- CHOWN_ON_START: true/false; normalize ownership once (set false after first run).&#xD;
+- SECURE: true/false; if true, set secure cookies (use with HTTPS).&#xD;
 &#xD;
-    DATE_TIME_FORMAT: variable goes with TIMEZONE for displaying on Upload Date &amp;amp; Date Modified&#xD;
+Ports:&#xD;
+- Map a host port to Container Port 80 for HTTP (e.g. Host 8080 → Container 80).&#xD;
+- (Optional) Map a host port to Container Port 443 for HTTPS (e.g. Host 8443 → Container 443).&#xD;
+- WebUI can be set to http://[IP]:[PORT:80]/ or https://[IP]:[PORT:443]/ accordingly.&#xD;
 &#xD;
-    TOTAL_UPLOAD_SIZE: variable changes apache upload size allowed&#xD;
-&#xD;
-    HTTP_PORT: variable changes apache http port (if changed use this with your container ip:port)&#xD;
-&#xD;
-    HTTPS_PORT: variable changes apache https port (if changed use this with your container ip:port)&#xD;
-&#xD;
-    BASE_URL: variable changes apaches base url&#xD;
-&#xD;
-    PERSISTENT_TOKENS_KEY: Please change this to a strong key if you intend to use in production env&#xD;
-&#xD;
-For more inforation please visit:&#xD;
+More info:&#xD;
 https://github.com/error311/filerise&#xD;
 https://github.com/error311/filerise-docker&#xD;
-&#xD;
-&#xD;
-
 </Overview>
   <Category>Network:Web</Category>
   <WebUI>http://[IP]:[PORT:80]/</WebUI>
   <TemplateURL>https://raw.githubusercontent.com/error311/UNRAID_COMMUNITY_APPS/master/multi-file-upload-editor-docker.xml</TemplateURL>
-  <Icon>https://raw.githubusercontent.com/error311/FileRise-docker/66eb6c04c5d326324f60061fce7ea5e3e277cda5/logo.png</Icon>
+  <Icon>https://raw.githubusercontent.com/error311/filerise-docker/main/logo.png</Icon>
   <ExtraParams/>
   <PostArgs/>
   <CPUset/>
@@ -53,7 +56,6 @@ https://github.com/error311/filerise-docker&#xD;
   <DonateText/>
   <DonateLink/>
   <Requires/>
-  <Config Name="WebUI Port" Target="80" Default="8080" Mode="tcp" Description="" Type="Port" Display="always" Required="true" Mask="false">8080</Config>
   <Config Name="UPLOADS PATH" Target="/var/www/uploads" Default="/mnt/user/appdata/FileRise/uploads/" Mode="rw" Description="" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/FileRise/uploads/</Config>
   <Config Name="USERS_DIR" Target="/var/www/users" Default="/mnt/user/appdata/FileRise/" Mode="rw" Description="Path for persistent users file" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/FileRise/</Config>
   <Config Name="META_DIR" Target="/var/www/metadata" Default="/mnt/user/appdata/FileRise/" Mode="rw" Description="Path for persistent metadata file json" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/FileRise/</Config>
@@ -61,8 +63,8 @@ https://github.com/error311/filerise-docker&#xD;
   <Config Name="TIMEZONE" Target="TIMEZONE" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">America/New_York</Config>
   <Config Name="DATE_TIME_FORMAT" Target="DATE_TIME_FORMAT" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">m/d/y  h:iA</Config>
   <Config Name="TOTAL_UPLOAD_SIZE" Target="TOTAL_UPLOAD_SIZE" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">5G</Config>
-  <Config Name="HTTP_PORT" Target="HTTP_PORT" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">80</Config>
-  <Config Name="HTTPS_PORT" Target="HTTPS_PORT" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">443</Config>
+  <Config Name="HTTP_PORT" Target="HTTP_PORT" Default="" Mode="" Description="Internal Apache port" Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="HTTPS_PORT" Target="HTTPS_PORT" Default="" Mode="" Description="Internal Apache port" Type="Variable" Display="always" Required="false" Mask="false"></Config>
   <Config Name="BASE_URL" Target="BASE_URL" Default="" Mode="" Description="(Legacy) Site root; SHARE_URL takes precedence or auto-detect applies." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
   <Config Name="PERSISTENT_TOKENS_KEY" Target="PERSISTENT_TOKENS_KEY" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">default_please_change_this_key</Config>
   <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="Numeric UID to map www-data (Unraid: nobody=99)" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
@@ -71,5 +73,7 @@ https://github.com/error311/filerise-docker&#xD;
   <Config Name="CHOWN_ON_START" Target="CHOWN_ON_START" Default="true" Mode="" Description="Normalize ownership on startup (set false after first run)" Type="Variable" Display="always" Required="false" Mask="false">true</Config>
   <Config Name="SHARE_URL" Target="SHARE_URL" Default="" Mode="" Description="Optional. Set to site root or full endpoint; leave empty to auto-detect." Type="Variable" Display="always" Required="false" Mask="false"></Config>
   <Config Name="SECURE" Target="SECURE" Default="false" Mode="" Description="true/false. If true, set secure cookies (use when served over HTTPS)" Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+  <Config Name="HTTP Port" Target="80" Default="8080" Mode="tcp" Description="Host→Container mapping for HTTP" Type="Port" Display="always" Required="true" Mask="false">8080</Config>
+  <Config Name="HTTPS Port" Target="443" Default="8443" Mode="tcp" Description="Host→Container mapping for HTTPS" Type="Port" Display="always" Required="false" Mask="false">8443</Config>
   <TailscaleStateDir/>
 </Container>
