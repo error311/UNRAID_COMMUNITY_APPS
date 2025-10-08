@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container version="13">
+<Container version="14">
   <Name>FileRise</Name>
   <Repository>error311/filerise-docker:latest</Repository>
   <Registry>https://hub.docker.com/r/error311/filerise-docker</Registry>
@@ -75,6 +75,6 @@ https://github.com/error311/filerise-docker&#xD;
   <Config Name="SECURE" Target="SECURE" Default="false" Mode="" Description="true/false. If true, set secure cookies (use when served over HTTPS)" Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
   <Config Name="HTTP Port" Target="80" Default="8080" Mode="tcp" Description="Host→Container mapping for HTTP" Type="Port" Display="always" Required="true" Mask="false">8080</Config>
   <Config Name="HTTPS Port" Target="443" Default="8443" Mode="tcp" Description="Host→Container mapping for HTTPS" Type="Port" Display="always" Required="false" Mask="false">8443</Config>
-  <Config Name="STREAM_LOGS" Target="STREAM_LOGS" Default="true" Mode="" Description="Stream Apache access/error logs to container console" Type="Variable" Display="advanced" Required="false" Mask="false">true</Config>
+  <Config Name="LOG_STREAM" Target="LOG_STREAM" Default="error" Mode="" Description="Which logs to stream to console: error|access|both|none" Type="Variable" Display="advanced" Required="false" Mask="false">error</Config>
   <TailscaleStateDir/>
 </Container>
