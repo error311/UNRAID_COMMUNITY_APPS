@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container version="14">
+<Container version="15">
   <Name>FileRise</Name>
   <Repository>error311/filerise-docker:latest</Repository>
   <Registry>https://hub.docker.com/r/error311/filerise-docker</Registry>
@@ -9,41 +9,41 @@
   <Privileged>false</Privileged>
   <Support>https://github.com/error311/filerise/issues</Support>
   <Project>https://forums.unraid.net/topic/187337-support-filerise/</Project>
-  <Overview>FileRise is a lightweight, secure web file manager with uploads, tagging, share links, gallery/table views, and an in-browser editor.&#xD;
-&#xD;
-    If you change HTTP_PORT / HTTPS_PORT, also edit the corresponding Container Port (Target) in the Port mappings to the same numbers. &#xD;
-    Otherwise the container will listen on a different internal port and the WebUI won’t be reachable.&#xD;
-&#xD;
-    Bridge mode (default): leave defaults (host 8080 → container 80). Access at http://SERVER_IP:8080/.&#xD;
-		Custom br0 (own IP): change host ports to 80/443 so you can use http://CONTAINER_IP/ (and https://CONTAINER_IP/ if you actually terminate TLS in-container).&#xD;
-&#xD;
-Directions:&#xD;
-- UPLOADS PATH: folder where uploaded files are stored.&#xD;
-- USERS_DIR: persistent location for users.txt.&#xD;
-- META_DIR: persistent location for metadata JSON files.&#xD;
-- SESSIONS_DIR: persistent storage for PHP session files.&#xD;
-&#xD;
-Environment Variables:&#xD;
-- TIMEZONE: e.g. America/New_York.&#xD;
-- DATE_TIME_FORMAT: display format for “Uploaded” and “Modified” (e.g. m/d/y  h:iA).&#xD;
-- TOTAL_UPLOAD_SIZE: Apache/PHP upload limit (e.g. 5G).&#xD;
-- HTTP_PORT / HTTPS_PORT: internal Apache ports. Default 80/443. (If you change these, set the Unraid Container Port fields to the same numbers.)&#xD;
-- BASE_URL: legacy base URL; usually leave empty (auto-detected).&#xD;
-- SHARE_URL: optional, set site root or full endpoint; leave empty to auto-detect.&#xD;
-- PERSISTENT_TOKENS_KEY: change to a strong key for production.&#xD;
-- PUID / PGID: map www-data to host UID/GID (Unraid: nobody=99, users=100).&#xD;
-- SCAN_ON_START: true/false; scan uploads on startup.&#xD;
-- CHOWN_ON_START: true/false; normalize ownership once (set false after first run).&#xD;
-- SECURE: true/false; if true, set secure cookies (use with HTTPS).&#xD;
-&#xD;
-Ports:&#xD;
-- Map a host port to Container Port 80 for HTTP (e.g. Host 8080 → Container 80).&#xD;
-- (Optional) Map a host port to Container Port 443 for HTTPS (e.g. Host 8443 → Container 443).&#xD;
-- WebUI can be set to http://[IP]:[PORT:80]/ or https://[IP]:[PORT:443]/ accordingly.&#xD;
-&#xD;
-More info:&#xD;
-https://github.com/error311/filerise&#xD;
-https://github.com/error311/filerise-docker&#xD;
+  <Overview>FileRise is a lightweight, secure web file manager with uploads, tagging, share links, gallery/table views, and an in-browser editor.
+
+    If you change HTTP_PORT / HTTPS_PORT, also edit the corresponding Container Port (Target) in the Port mappings to the same numbers.
+    Otherwise the container will listen on a different internal port and the WebUI won’t be reachable.
+
+    Bridge mode (default): leave defaults (host 8080 → container 80). Access at http://SERVER_IP:8080/.
+    Custom br0 (own IP): change host ports to 80/443 so you can use http://CONTAINER_IP/ (and https://CONTAINER_IP/ if you actually terminate TLS in-container).
+
+Directions:
+- UPLOADS PATH: folder where uploaded files are stored. **Recommended:** use a dedicated folder (e.g. /mnt/user/appdata/FileRise/uploads/), not the root of a huge media share.
+- USERS_DIR: persistent location for users.txt.
+- META_DIR: persistent location for metadata JSON files.
+- SESSIONS_DIR: persistent storage for PHP session files.
+
+Environment Variables:
+- TIMEZONE: e.g. America/New_York.
+- DATE_TIME_FORMAT: display format for “Uploaded” and “Modified” (e.g. m/d/y  h:iA).
+- TOTAL_UPLOAD_SIZE: Apache/PHP upload limit (e.g. 5G).
+- HTTP_PORT / HTTPS_PORT: internal Apache ports. Default 80/443. (If you change these, set the Unraid Container Port fields to the same numbers.)
+- BASE_URL: legacy base URL; usually leave empty (auto-detected).
+- SHARE_URL: optional, set site root or full endpoint; leave empty to auto-detect.
+- PERSISTENT_TOKENS_KEY: change to a strong key for production.
+- PUID / PGID: map www-data to host UID/GID (Unraid: nobody=99, users=100).
+- SCAN_ON_START: true/false. If true, run a one-shot scan of /var/www/uploads at container start to build the metadata index. Good for first run on an existing folder tree.
+- CHOWN_ON_START: true/false. If true, recursively chown /var/www/uploads and /var/www/metadata to www-data on startup. Recommended true on first run, then set to false once permissions are correct.
+- SECURE: true/false; if true, set secure cookies (use with HTTPS).
+
+Ports:
+- Map a host port to Container Port 80 for HTTP (e.g. Host 8080 → Container 80).
+- (Optional) Map a host port to Container Port 443 for HTTPS (e.g. Host 8443 → Container 443).
+- WebUI can be set to http://[IP]:[PORT:80]/ or https://[IP]:[PORT:443]/ accordingly.
+
+More info:
+https://github.com/error311/filerise
+https://github.com/error311/filerise-docker
 </Overview>
   <Category>Network:Web</Category>
   <WebUI>http://[IP]:[PORT:80]/</WebUI>
@@ -56,23 +56,23 @@ https://github.com/error311/filerise-docker&#xD;
   <DonateText/>
   <DonateLink/>
   <Requires/>
-  <Config Name="UPLOADS PATH" Target="/var/www/uploads" Default="/mnt/user/appdata/FileRise/uploads/" Mode="rw" Description="" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/FileRise/uploads/</Config>
+  <Config Name="UPLOADS PATH" Target="/var/www/uploads" Default="/mnt/user/appdata/FileRise/uploads/" Mode="rw" Description="Folder where FileRise stores uploaded files (use a dedicated folder, not the root of a large media share)." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/FileRise/uploads/</Config>
   <Config Name="USERS_DIR" Target="/var/www/users" Default="/mnt/user/appdata/FileRise/" Mode="rw" Description="Path for persistent users file" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/FileRise/</Config>
-  <Config Name="META_DIR" Target="/var/www/metadata" Default="/mnt/user/appdata/FileRise/" Mode="rw" Description="Path for persistent metadata file json" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/FileRise/</Config>
-  <Config Name="SESSIONS_DIR" Target="/var/www/sessions" Default="/mnt/user/appdata/FileRise/sessions/" Mode="rw" Description="Path for persistent sessions data" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/FileRise/sessions/</Config>
-  <Config Name="TIMEZONE" Target="TIMEZONE" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">America/New_York</Config>
-  <Config Name="DATE_TIME_FORMAT" Target="DATE_TIME_FORMAT" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">m/d/y  h:iA</Config>
-  <Config Name="TOTAL_UPLOAD_SIZE" Target="TOTAL_UPLOAD_SIZE" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">5G</Config>
-  <Config Name="HTTP_PORT" Target="HTTP_PORT" Default="" Mode="" Description="Internal Apache port" Type="Variable" Display="always" Required="false" Mask="false"></Config>
-  <Config Name="HTTPS_PORT" Target="HTTPS_PORT" Default="" Mode="" Description="Internal Apache port" Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="META_DIR" Target="/var/www/metadata" Default="/mnt/user/appdata/FileRise/" Mode="rw" Description="Path for persistent metadata JSON files (tags, search index, share links, etc.)" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/FileRise/</Config>
+  <Config Name="SESSIONS_DIR" Target="/var/www/sessions" Default="/mnt/user/appdata/FileRise/sessions/" Mode="rw" Description="Path for persistent PHP session data" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/FileRise/sessions/</Config>
+  <Config Name="TIMEZONE" Target="TIMEZONE" Default="" Mode="" Description="PHP/container timezone, e.g. America/New_York" Type="Variable" Display="always" Required="false" Mask="false">America/New_York</Config>
+  <Config Name="DATE_TIME_FORMAT" Target="DATE_TIME_FORMAT" Default="" Mode="" Description="Display format for dates (Uploaded/Modified). Defaults to m/d/y  h:iA if not set." Type="Variable" Display="always" Required="false" Mask="false">m/d/y  h:iA</Config>
+  <Config Name="TOTAL_UPLOAD_SIZE" Target="TOTAL_UPLOAD_SIZE" Default="" Mode="" Description="Max total upload size per request (e.g. 5G, 10G). Sets PHP and Apache limits." Type="Variable" Display="always" Required="false" Mask="false">5G</Config>
+  <Config Name="HTTP_PORT" Target="HTTP_PORT" Default="" Mode="" Description="Internal Apache HTTP port (default 80). If set, also change the Container Port 80 mapping above." Type="Variable" Display="always" Required="false" Mask="false"></Config>
+  <Config Name="HTTPS_PORT" Target="HTTPS_PORT" Default="" Mode="" Description="Internal Apache HTTPS port (default 443). If set, also change the Container Port 443 mapping above." Type="Variable" Display="always" Required="false" Mask="false"></Config>
   <Config Name="BASE_URL" Target="BASE_URL" Default="" Mode="" Description="(Legacy) Site root; SHARE_URL takes precedence or auto-detect applies." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
-  <Config Name="PERSISTENT_TOKENS_KEY" Target="PERSISTENT_TOKENS_KEY" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">default_please_change_this_key</Config>
+  <Config Name="PERSISTENT_TOKENS_KEY" Target="PERSISTENT_TOKENS_KEY" Default="" Mode="" Description="Secret key used to sign persistent login tokens. Change this for production." Type="Variable" Display="always" Required="false" Mask="false">default_please_change_this_key</Config>
   <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="Numeric UID to map www-data (Unraid: nobody=99)" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
   <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Numeric GID to map www-data (Unraid: users=100)" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
-  <Config Name="SCAN_ON_START" Target="SCAN_ON_START" Default="" Mode="" Description="" Type="Variable" Display="always" Required="false" Mask="false">true</Config>
-  <Config Name="CHOWN_ON_START" Target="CHOWN_ON_START" Default="true" Mode="" Description="Normalize ownership on startup (set false after first run)" Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="SCAN_ON_START" Target="SCAN_ON_START" Default="" Mode="" Description="true/false. If true, run a one-shot scan of /var/www/uploads on container start to build metadata (good for first run on existing files)." Type="Variable" Display="always" Required="false" Mask="false">true</Config>
+  <Config Name="CHOWN_ON_START" Target="CHOWN_ON_START" Default="true" Mode="" Description="true/false. If true, recursively chown uploads/ and metadata/ to www-data at startup. Recommended true on first run, then false once perms are correct." Type="Variable" Display="always" Required="false" Mask="false">true</Config>
   <Config Name="SHARE_URL" Target="SHARE_URL" Default="" Mode="" Description="Optional. Set to site root or full endpoint; leave empty to auto-detect." Type="Variable" Display="always" Required="false" Mask="false"></Config>
-  <Config Name="SECURE" Target="SECURE" Default="false" Mode="" Description="true/false. If true, set secure cookies (use when served over HTTPS)" Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
+  <Config Name="SECURE" Target="SECURE" Default="false" Mode="" Description="true/false. If true, set secure cookies (use when served over HTTPS)." Type="Variable" Display="advanced" Required="false" Mask="false">false</Config>
   <Config Name="HTTP Port" Target="80" Default="8080" Mode="tcp" Description="Host→Container mapping for HTTP" Type="Port" Display="always" Required="true" Mask="false">8080</Config>
   <Config Name="HTTPS Port" Target="443" Default="8443" Mode="tcp" Description="Host→Container mapping for HTTPS" Type="Port" Display="always" Required="false" Mask="false">8443</Config>
   <Config Name="LOG_STREAM" Target="LOG_STREAM" Default="error" Mode="" Description="Which logs to stream to console: error|access|both|none" Type="Variable" Display="advanced" Required="false" Mask="false">error</Config>
