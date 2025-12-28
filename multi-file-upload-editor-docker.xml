@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<Container version="15">
+<Container version="16">
   <Name>FileRise</Name>
   <Repository>error311/filerise-docker:latest</Repository>
   <Registry>https://hub.docker.com/r/error311/filerise-docker</Registry>
@@ -28,7 +28,6 @@ Environment Variables:
 - DATE_TIME_FORMAT: display format for “Uploaded” and “Modified” (e.g. m/d/y  h:iA).
 - TOTAL_UPLOAD_SIZE: Apache/PHP upload limit (e.g. 5G).
 - HTTP_PORT / HTTPS_PORT: internal Apache ports. Default 80/443. (If you change these, set the Unraid Container Port fields to the same numbers.)
-- BASE_URL: legacy base URL; usually leave empty (auto-detected).
 - SHARE_URL: optional, set site root or full endpoint; leave empty to auto-detect.
 - PERSISTENT_TOKENS_KEY: change to a strong key for production.
 - PUID / PGID: map www-data to host UID/GID (Unraid: nobody=99, users=100).
@@ -63,9 +62,8 @@ https://github.com/error311/filerise-docker
   <Config Name="TIMEZONE" Target="TIMEZONE" Default="" Mode="" Description="PHP/container timezone, e.g. America/New_York" Type="Variable" Display="always" Required="false" Mask="false">America/New_York</Config>
   <Config Name="DATE_TIME_FORMAT" Target="DATE_TIME_FORMAT" Default="" Mode="" Description="Display format for dates (Uploaded/Modified). Defaults to m/d/y  h:iA if not set." Type="Variable" Display="always" Required="false" Mask="false">m/d/y  h:iA</Config>
   <Config Name="TOTAL_UPLOAD_SIZE" Target="TOTAL_UPLOAD_SIZE" Default="" Mode="" Description="Max total upload size per request (e.g. 5G, 10G). Sets PHP and Apache limits." Type="Variable" Display="always" Required="false" Mask="false">5G</Config>
-  <Config Name="HTTP_PORT" Target="HTTP_PORT" Default="" Mode="" Description="Internal Apache HTTP port (default 80). If set, also change the Container Port 80 mapping above." Type="Variable" Display="always" Required="false" Mask="false"></Config>
-  <Config Name="HTTPS_PORT" Target="HTTPS_PORT" Default="" Mode="" Description="Internal Apache HTTPS port (default 443). If set, also change the Container Port 443 mapping above." Type="Variable" Display="always" Required="false" Mask="false"></Config>
-  <Config Name="BASE_URL" Target="BASE_URL" Default="" Mode="" Description="(Legacy) Site root; SHARE_URL takes precedence or auto-detect applies." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="HTTP_PORT" Target="HTTP_PORT" Default="" Mode="" Description="Advanced: internal Apache HTTP listen port (default 80). Leave blank. Only change if you also change the container port target mapping." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
+  <Config Name="HTTPS_PORT" Target="HTTPS_PORT" Default="" Mode="" Description="Advanced: internal Apache HTTPS listen port (default 443). Leave blank. Only change if you also change the container port target mapping." Type="Variable" Display="advanced" Required="false" Mask="false"></Config>
   <Config Name="PERSISTENT_TOKENS_KEY" Target="PERSISTENT_TOKENS_KEY" Default="" Mode="" Description="Secret key used to sign persistent login tokens. Change this for production." Type="Variable" Display="always" Required="false" Mask="false">default_please_change_this_key</Config>
   <Config Name="PUID" Target="PUID" Default="99" Mode="" Description="Numeric UID to map www-data (Unraid: nobody=99)" Type="Variable" Display="always" Required="false" Mask="false">99</Config>
   <Config Name="PGID" Target="PGID" Default="100" Mode="" Description="Numeric GID to map www-data (Unraid: users=100)" Type="Variable" Display="always" Required="false" Mask="false">100</Config>
